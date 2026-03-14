@@ -65,7 +65,7 @@ export const runPostCommitReview = async (): Promise<void> => {
     }
     console.log(`🎯 Matched files for review: ${matchedFiles.join(", ")}`);
 
-    const diff = getCommitDiff();
+    const diff = getCommitDiff(matchedFiles);
     if (!diff) {
       clearTimeout(timeoutId);
       console.log("ℹ️ No diff found (initial commit), skipping analysis");

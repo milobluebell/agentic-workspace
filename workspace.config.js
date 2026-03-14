@@ -12,12 +12,11 @@ module.exports = {
     /(^|\/)package\.json$/i,
     /(^|\/)pnpm-(?:lock|workspace)\.yaml$/i,
     /(^|\/)tsconfig(?:\..+)?\.json$/i,
-    /(^|\/)\.cnb\.yml$/i,
     /(^|\/)(?:Dockerfile|docker-compose(?:\..+)?\.ya?ml)$/i,
     /(^|\/)\.env(?:\.[^/.]+)?(?:\.example)?$/i,
     /(^|\/)\.npmrc$/i,
     /(^|\/)(?:\.eslintrc(?:\..+)?|eslint\.config\.(?:js|cjs|mjs|ts))$/i,
     /(^|\/)(?:\.prettierrc(?:\..+)?|prettier\.config\.(?:js|cjs|mjs|ts))$/i,
   ],
-  postCommitReviewMaxRuntimeMs: 20 * 60 * 1000,
+  postCommitReviewMaxRuntimeMs: 15 * 60 * 1000,
 };
