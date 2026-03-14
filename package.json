@@ -1,6 +1,6 @@
 {
   "name": "@milobluebell/agentic-workspace",
-  "version": "0.1.0",
+  "version": "0.0.1",
   "description": "AI-powered code review, pattern aggregation, rule evolution and metrics toolkit for engineering teams",
   "license": "MIT",
   "author": "Milo <milobluebell>",

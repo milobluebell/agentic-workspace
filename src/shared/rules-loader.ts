@@ -1,7 +1,7 @@
 "use strict";
 
 import * as path from "path";
-import { getConfig } from "../workspace-config";
+import { getConfig } from "../root-config";
 import { readAllFiles, pathExists } from "./file-reader";
 
 /**

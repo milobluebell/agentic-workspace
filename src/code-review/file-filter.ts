@@ -1,11 +1,15 @@
 "use strict";
 
-import { BUSINESS_CODE_FILE_PATTERNS, PROJECT_CONFIG_FILE_PATTERNS } from "../common.config";
+import { getConfig } from "../root-config";
 
 export interface ReviewExecutionDecision {
   shouldRun: boolean;
   matchedFiles: string[];
 }
+
+const config = getConfig();
+const businessCodeFilePatterns = config.businessCodeFilePatterns ?? [];
+const projectConfigFilePatterns = config.projectConfigFilePatterns ?? [];
 
 const matchesAnyPattern = (filePath: string, patterns: ReadonlyArray<RegExp>): boolean =>
   patterns.some((pattern) => pattern.test(filePath));
@@ -18,8 +22,8 @@ const matchesAnyPattern = (filePath: string, patterns: ReadonlyArray<RegExp>): b
 export const shouldRunReview = (committedFiles: string[]): ReviewExecutionDecision => {
   const matchedFiles = committedFiles.filter(
     (filePath) =>
-      matchesAnyPattern(filePath, BUSINESS_CODE_FILE_PATTERNS) ||
-      matchesAnyPattern(filePath, PROJECT_CONFIG_FILE_PATTERNS)
+      matchesAnyPattern(filePath, businessCodeFilePatterns) ||
+      matchesAnyPattern(filePath, projectConfigFilePatterns)
   );
   return {
     shouldRun: matchedFiles.length > 0,

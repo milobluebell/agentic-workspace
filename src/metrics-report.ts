@@ -4,7 +4,7 @@ import * as fs from "fs";
 import * as path from "path";
 import { SEVERITY_WEIGHTS, getISOWeekLabel, readAllFiles } from "./shared";
 import type { ReviewRecord, IssueSeverity } from "./shared";
-import { getConfig } from "./workspace-config";
+import { getConfig } from "./root-config";
 
 interface WeekStats {
   weekLabel: string;

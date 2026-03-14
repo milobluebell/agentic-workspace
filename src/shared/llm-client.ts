@@ -1,7 +1,7 @@
 "use strict";
 
 import axios from "axios";
-import { getConfig } from "../workspace-config";
+import { getConfig } from "../root-config";
 
 interface SiliconFlowResponse {
   choices: Array<{

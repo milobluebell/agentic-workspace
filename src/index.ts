@@ -26,10 +26,8 @@ export {
   getCommitDiff,
 } from "./shared";
 
-export type { WorkspaceConfig } from "./workspace-config";
-export { getConfig, loadWorkspaceConfig, resetConfigCache } from "./workspace-config";
-
-export { MODEL_NAME, API_BASE_URL, buildPostCommitReviewPrompt } from "./common.config";
+export type { WorkspaceConfig } from "./root-config";
+export { getConfig, loadWorkspaceConfig, resetConfigCache } from "./root-config";
 
 export { runPostCommitReview } from "./code-review/post-commit-review";
 export { runAggregatePatterns } from "./aggregate-patterns";

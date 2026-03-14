@@ -8,8 +8,10 @@ import { isInitialCommit } from "./git-files";
  * @returns diff 文本，初始 commit 返回空字符串
  */
 export const getCommitDiff = (): string => {
-  if (isInitialCommit()) return "";
   try {
+    if (isInitialCommit()) {
+      return execSync("git show --pretty=format: --root HEAD").toString();
+    }
     return execSync("git diff HEAD^ HEAD").toString();
   } catch {
     return "";

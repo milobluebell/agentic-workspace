@@ -15,7 +15,7 @@ import type {
   IssueType,
   IssueSeverity,
 } from "./shared";
-import { getConfig } from "./workspace-config";
+import { getConfig } from "./root-config";
 
 interface PatternsSnapshot {
   generatedAt: string;

@@ -9,7 +9,7 @@ import type { CurrentCommitInfo } from "./types";
  */
 export const isInitialCommit = (): boolean => {
   try {
-    execSync("git log -1 --pretty=format:%h", { stdio: "pipe" });
+    execSync("git rev-parse --verify HEAD^", { stdio: "pipe" });
     return false;
   } catch {
     return true;
@@ -31,9 +31,8 @@ export const getCurrentCommit = (): CurrentCommitInfo => {
  * @returns 文件路径数组
  */
 export const getCommittedFiles = (): string[] => {
-  if (isInitialCommit()) return [];
   try {
-    return execSync("git diff-tree --no-commit-id --name-only -r HEAD")
+    return execSync("git diff-tree --root --no-commit-id --name-only -r HEAD")
       .toString()
       .split("\n")
       .map((file) => file.trim())

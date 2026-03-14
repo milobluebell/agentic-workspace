@@ -4,7 +4,7 @@ import * as fs from "fs";
 import * as path from "path";
 import { callAI, SEVERITY_LABEL, readAllFiles, pathExists } from "./shared";
 import type { PatternEntry } from "./shared";
-import { getConfig } from "./workspace-config";
+import { getConfig } from "./root-config";
 
 interface PatternsSnapshot {
   generatedAt: string;

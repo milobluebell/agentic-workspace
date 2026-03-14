@@ -7,4 +7,17 @@ module.exports = {
   metricsDir: "agents-workspace/metrics",
   rulesDir: ".cursor/rules",
   proposalsDir: ".cursor/rule-proposals",
+  businessCodeFilePatterns: [/\.(?:ts|tsx|js|jsx|json)$/i],
+  projectConfigFilePatterns: [
+    /(^|\/)package\.json$/i,
+    /(^|\/)pnpm-(?:lock|workspace)\.yaml$/i,
+    /(^|\/)tsconfig(?:\..+)?\.json$/i,
+    /(^|\/)\.cnb\.yml$/i,
+    /(^|\/)(?:Dockerfile|docker-compose(?:\..+)?\.ya?ml)$/i,
+    /(^|\/)\.env(?:\.[^/.]+)?(?:\.example)?$/i,
+    /(^|\/)\.npmrc$/i,
+    /(^|\/)(?:\.eslintrc(?:\..+)?|eslint\.config\.(?:js|cjs|mjs|ts))$/i,
+    /(^|\/)(?:\.prettierrc(?:\..+)?|prettier\.config\.(?:js|cjs|mjs|ts))$/i,
+  ],
+  postCommitReviewMaxRuntimeMs: 20 * 60 * 1000,
 };

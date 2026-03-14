@@ -4,7 +4,7 @@ import * as fs from "fs";
 import * as path from "path";
 import { getDatetimeStr, TYPE_LABEL } from "../shared";
 import type { IssueSeverity, IssueType, ReviewIssue, ReviewRecord } from "../shared";
-import { getConfig } from "../workspace-config";
+import { getConfig } from "../root-config";
 
 /**
  * 生成审查报告的 Markdown 文本
