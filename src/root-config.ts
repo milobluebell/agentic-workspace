@@ -14,13 +14,35 @@ export interface WorkspaceConfig {
   rulesDir: string;
   proposalsDir: string;
   reviewPromptExtra?: string;
-  businessCodeFilePatterns?: ReadonlyArray<RegExp>;
-  projectConfigFilePatterns?: ReadonlyArray<RegExp>;
-  postCommitReviewMaxRuntimeMs?: number;
+  businessCodeFilePatterns: ReadonlyArray<RegExp>;
+  projectConfigFilePatterns: ReadonlyArray<RegExp>;
+  postCommitReviewMaxRuntimeMs: number;
 }
 
 let cachedConfig: WorkspaceConfig | null = null;
 let envLoaded = false;
+
+const DEFAULT_CONFIG: WorkspaceConfig = {
+  modelName: "Pro/zai-org/GLM-5",
+  apiBaseUrl: "https://api.siliconflow.cn/v1/chat/completions",
+  codeReviewDir: "agents-workspace/code-review",
+  patternsDir: "agents-workspace/patterns",
+  metricsDir: "agents-workspace/metrics",
+  rulesDir: ".cursor/rules",
+  proposalsDir: ".cursor/rule-proposals",
+  businessCodeFilePatterns: [/\.(?:ts|tsx|js|jsx|json)$/i],
+  projectConfigFilePatterns: [
+    /(^|\/)package\.json$/i,
+    /(^|\/)pnpm-(?:lock|workspace)\.yaml$/i,
+    /(^|\/)tsconfig(?:\..+)?\.json$/i,
+    /(^|\/)(?:Dockerfile|docker-compose(?:\..+)?\.ya?ml)$/i,
+    /(^|\/)\.env(?:\.[^/.]+)?(?:\.example)?$/i,
+    /(^|\/)\.npmrc$/i,
+    /(^|\/)(?:\.eslintrc(?:\..+)?|eslint\.config\.(?:js|cjs|mjs|ts))$/i,
+    /(^|\/)(?:\.prettierrc(?:\..+)?|prettier\.config\.(?:js|cjs|mjs|ts))$/i,
+  ],
+  postCommitReviewMaxRuntimeMs: 20 * 60 * 1000,
+};
 
 const loadProjectEnv = (): void => {
   if (envLoaded) return;
@@ -47,9 +69,9 @@ export const loadWorkspaceConfig = (): WorkspaceConfig => {
     try {
       // eslint-disable-next-line @typescript-eslint/no-require-imports
       const userConfig = require(filePath) as Partial<WorkspaceConfig> & { default?: Partial<WorkspaceConfig> };
-      const resolved = (userConfig.default ?? userConfig) as WorkspaceConfig;
+      const resolved = (userConfig.default ?? userConfig) as Partial<WorkspaceConfig>;
       console.log(`📦 Loaded workspace config from ${filename}`);
-      return resolved;
+      return { ...DEFAULT_CONFIG, ...resolved };
     } catch (err) {
       console.warn(`⚠️ Failed to load ${filename}: ${(err as Error).message}`);
     }

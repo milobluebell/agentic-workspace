@@ -1,4 +1,4 @@
-# @milobluebell/agentic-workspace
+# agentic-workspace
 
 AI-powered code review, pattern aggregation, rule evolution and metrics toolkit.
 

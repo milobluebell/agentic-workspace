@@ -1,0 +1,28 @@
+---
+description: Project background and mission
+alwaysApply: true
+---
+
+# Project Background
+
+This project is a CLI tool.
+
+Its dedicated mission is to help AI coding projects continuously improve:
+
+- observability
+- code quality
+- delivery efficiency evolution
+
+# Core Positioning
+
+The CLI should be treated as an engineering copilot for AI coding workflows.
+
+It focuses on making the development process measurable, governable, and continuously optimizable.
+
+# Expected Outcome
+
+Every new feature or change should align with this project background:
+
+- strengthen observability signals and diagnostics
+- improve code quality confidence and maintainability
+- reduce friction and increase engineering execution efficiency

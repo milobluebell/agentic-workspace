@@ -1,6 +1,6 @@
 "use strict";
 
-import { getConfig } from "../root-config";
+import { getConfig } from "@milobluebell/agentic-workspace/src/root-config";
 
 export interface ReviewExecutionDecision {
   shouldRun: boolean;
@@ -8,8 +8,8 @@ export interface ReviewExecutionDecision {
 }
 
 const config = getConfig();
-const businessCodeFilePatterns = config.businessCodeFilePatterns ?? [];
-const projectConfigFilePatterns = config.projectConfigFilePatterns ?? [];
+const businessCodeFilePatterns = config.businessCodeFilePatterns;
+const projectConfigFilePatterns = config.projectConfigFilePatterns;
 
 const matchesAnyPattern = (filePath: string, patterns: ReadonlyArray<RegExp>): boolean =>
   patterns.some((pattern) => pattern.test(filePath));
