@@ -1,0 +1,16 @@
+---
+description: Agent task workflow
+alwaysApply: true
+---
+
+# Requirements for the Agent
+
+Before starting any task, the agent **must perform a “requirement confirmation” by restating the request once in a list or table format**.
+
+Rules:
+
+1. Before execution begins, the agent must first **restate the user’s request once** based on its own understanding.
+2. The purpose of restating is to ensure both sides have a consistent understanding of the requirement.
+3. If any part of the requirement is unclear, the agent must ask clarifying questions before proceeding.
+4. The agent is not allowed to start implementation or modify code before requirement confirmation is completed.
+5. If the completed requirement comes from documentation, especially a bug list, the agent must mark completion under the corresponding item, specify the files changed, and describe the main implementation approach.

@@ -1,0 +1,51 @@
+---
+description: coding standards
+alwaysApply: true
+---
+
+# Lint Rules
+
+- Do not add unnecessary blank lines inside functions.
+
+---
+
+# Dependencies
+
+Rules:
+
+- All dependencies must be declared in `package.json`.
+- Avoid introducing new libraries unless necessary.
+- When introducing a new library, explain:
+  - its purpose
+  - usage scenario
+  - expected bundle size impact.
+
+Import rules:
+
+- Prefer **absolute imports**.
+- Avoid relative imports when a path alias (`@`, `src`, etc.) exists.
+
+---
+
+# Comments
+
+Rules:
+
+- Newly created classes, class methods, and declared functions **must not include comments**.
+- Code must be self-descriptive through clear naming.
+
+Exception:
+
+Shared utility functions outside classes may include comments describing:
+
+- parameters
+- return values
+- exceptions
+
+---
+
+# Environment Variables
+
+Environment variables must never be accessed directly.
+
+They must be centralized in:
