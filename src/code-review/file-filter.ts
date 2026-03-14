@@ -1,6 +1,6 @@
 "use strict";
 
-import { getConfig } from "@milobluebell/agentic-workspace/src/root-config";
+import { getConfig } from "agentic-workspace/src/root-config";
 
 export interface ReviewExecutionDecision {
   shouldRun: boolean;

@@ -5,7 +5,7 @@ AI-powered code review, pattern aggregation, rule evolution and metrics toolkit.
 ## Install
 
 ```bash
-pnpm add @milobluebell/agentic-workspace
+pnpm add agentic-workspace
 ```
 
 ## CLI Commands

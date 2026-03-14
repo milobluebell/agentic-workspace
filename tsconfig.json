@@ -9,7 +9,7 @@
     "baseUrl": ".",
     "paths": {
       "src/*": ["src/*"],
-      "@milobluebell/agentic-workspace/src/*": ["src/*"]
+      "agentic-workspace/src/*": ["src/*"]
     },
     "declaration": true,
     "declarationMap": true,
