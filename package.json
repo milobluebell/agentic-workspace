@@ -1,6 +1,6 @@
 {
   "name": "agentic-workspace",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "AI-powered code review, pattern aggregation, rule evolution and metrics toolkit for engineering teams",
   "license": "MIT",
   "author": "Milo <milobluebell>",
