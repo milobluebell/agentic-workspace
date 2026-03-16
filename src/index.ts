@@ -33,6 +33,7 @@ export { runPostCommitReview } from "./code-review/post-commit-review";
 export { runAggregatePatterns } from "./aggregate-patterns";
 export { runEvolveRules } from "./evolve-rules";
 export { runMetricsReport } from "./metrics-report";
+export { runGenerateSnipets } from "./snipets/generate-snipets";
 
 export { parseAIResponse } from "./code-review/ai-response";
 export { shouldRunReview } from "./code-review/file-filter";

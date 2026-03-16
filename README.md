@@ -34,6 +34,10 @@ pnpm add agentic-workspace
 npx aw-ask --prompt="How can I improve the current review workflow?"
 ```
 
+### `aw-snipets`
+
+基于当前 commit 的业务代码 diff，让 AI 抽象并沉淀可复用函数到 `agents-workspace/snipets`。函数会按 `components`/`utils` 分类输出为独立 `.md` 文件，并自动刷新 `agents-workspace/snipets/index.md` 作为入口文档。
+
 ## Configuration
 
 在项目根目录创建 `workspace.config.js` 或 `workspace.config.ts`：

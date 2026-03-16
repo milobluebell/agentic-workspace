@@ -1,4 +1,18 @@
 #!/usr/bin/env sh
 npm run build
-node dist/bin/aw-review.js
-npm run changelog
+node dist/bin/aw-review.js &
+pid1=$!
+node dist/bin/aw-snipets.js &
+pid2=$!
+
+wait "$pid1"
+status1=$?
+wait "$pid2"
+status2=$?
+
+if [ "$status1" -ne 0 ] || [ "$status2" -ne 0 ]; then
+  if [ "$status1" -ne 0 ]; then
+    exit "$status1"
+  fi
+  exit "$status2"
+fi

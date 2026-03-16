@@ -1,6 +1,6 @@
 {
   "name": "agentic-workspace",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "AI-powered code review, pattern aggregation, rule evolution and metrics toolkit for engineering teams",
   "license": "MIT",
   "author": "Milo <milobluebell>",
@@ -33,7 +33,8 @@
     "aw-patterns": "dist/bin/aw-patterns.js",
     "aw-evolve": "dist/bin/aw-evolve.js",
     "aw-metrics": "dist/bin/aw-metrics.js",
-    "aw-ask": "dist/bin/aw-ask.js"
+    "aw-ask": "dist/bin/aw-ask.js",
+    "aw-snipets": "dist/bin/aw-snipets.js"
   },
   "scripts": {
     "lint": "eslint . --ext .ts",
