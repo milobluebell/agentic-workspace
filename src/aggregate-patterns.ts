@@ -12,7 +12,6 @@ import {
 import type {
   ReviewRecord,
   PatternEntry,
-  IssueType,
   IssueSeverity,
 } from "./shared";
 import { getConfig } from "./root-config";

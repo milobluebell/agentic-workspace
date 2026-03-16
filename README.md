@@ -26,6 +26,14 @@ pnpm add agentic-workspace
 
 按 ISO 周聚合所有审查记录，计算 Severity Score、New Fingerprints、Recurring Issues 三项趋势指标，生成 Snowball Metrics 报告。
 
+### `aw-ask`
+
+基于当前项目上下文（含 Cursor Rules）执行一次轻量 AI 问答，适合快速咨询项目规范、实现建议或代码改进方向。
+
+```bash
+npx aw-ask --prompt="How can I improve the current review workflow?"
+```
+
 ## Configuration
 
 在项目根目录创建 `workspace.config.js` 或 `workspace.config.ts`：
@@ -43,9 +51,10 @@ module.exports = {
 
 | Name                        | Type                    | Default                                            | Required | Description                                         |
 | --------------------------- | ----------------------- | -------------------------------------------------- | -------- | --------------------------------------------------- |
+| `llmProtocol`               | `"siliconflow" \| "openai-compatible"` | `"siliconflow"` | No | LLM 协议类型，`openai-compatible` 可对接 OpenAI 协议接口 |
 | `modelName`                 | `string`                | `"Pro/zai-org/GLM-5"`                              | No       | AI 模型名称                                         |
 | `apiBaseUrl`                | `string`                | `"https://api.siliconflow.cn/v1/chat/completions"` | No       | AI API 请求地址                                     |
-| `apiKey`                    | `string`                | `undefined`                                        | No       | SiliconFlow API Key，优先使用环境变量 `LLM_API_KEY` |
+| `apiKey`                    | `string`                | `undefined`                                        | No       | API Key，优先使用环境变量 `LLM_API_KEY` / `OPENAI_API_KEY` |
 | `codeReviewDir`             | `string`                | `"agents-workspace/code-review"`                   | No       | 审查报告输出目录（相对于 cwd）                      |
 | `patternsDir`               | `string`                | `"agents-workspace/patterns"`                      | No       | Pattern 聚合报告输出目录（相对于 cwd）              |
 | `metricsDir`                | `string`                | `"agents-workspace/metrics"`                       | No       | Metrics 报告输出目录（相对于 cwd）                  |
@@ -59,7 +68,8 @@ module.exports = {
 
 | Name          | Description                                                   | Required                           |
 | ------------- | ------------------------------------------------------------- | ---------------------------------- |
-| `LLM_API_KEY` | SiliconFlow API 密钥（推荐），优先级高于配置文件中的 `apiKey` | Yes（若配置文件中未设置 `apiKey`） |
+| `LLM_API_KEY` | 通用 API 密钥（推荐），优先级高于配置文件中的 `apiKey`        | Yes（若配置文件中未设置 `apiKey`） |
+| `OPENAI_API_KEY` | OpenAI 协议接口密钥（次优先级，低于 `LLM_API_KEY`）       | No                                 |
 
 ## License
 

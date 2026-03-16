@@ -5,6 +5,7 @@ import * as fs from "fs";
 import * as path from "path";
 
 export interface WorkspaceConfig {
+  llmProtocol: "siliconflow" | "openai-compatible";
   modelName: string;
   apiBaseUrl: string;
   apiKey?: string;
@@ -23,6 +24,7 @@ let cachedConfig: WorkspaceConfig | null = null;
 let envLoaded = false;
 
 const DEFAULT_CONFIG: WorkspaceConfig = {
+  llmProtocol: "siliconflow",
   modelName: "Pro/zai-org/GLM-5",
   apiBaseUrl: "https://api.siliconflow.cn/v1/chat/completions",
   codeReviewDir: "agents-workspace/code-review",
@@ -70,8 +72,13 @@ export const loadWorkspaceConfig = (): WorkspaceConfig => {
       // eslint-disable-next-line @typescript-eslint/no-require-imports
       const userConfig = require(filePath) as Partial<WorkspaceConfig> & { default?: Partial<WorkspaceConfig> };
       const resolved = (userConfig.default ?? userConfig) as Partial<WorkspaceConfig>;
+      const mergedConfig: WorkspaceConfig = {
+        ...DEFAULT_CONFIG,
+        ...resolved,
+        llmProtocol: resolved.llmProtocol ?? DEFAULT_CONFIG.llmProtocol,
+      };
       console.log(`📦 Loaded workspace config from ${filename}`);
-      return { ...DEFAULT_CONFIG, ...resolved };
+      return mergedConfig;
     } catch (err) {
       console.warn(`⚠️ Failed to load ${filename}: ${(err as Error).message}`);
     }

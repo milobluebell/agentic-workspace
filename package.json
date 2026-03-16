@@ -1,6 +1,6 @@
 {
   "name": "agentic-workspace",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "AI-powered code review, pattern aggregation, rule evolution and metrics toolkit for engineering teams",
   "license": "MIT",
   "author": "Milo <milobluebell>",
@@ -36,7 +36,10 @@
     "aw-ask": "dist/bin/aw-ask.js"
   },
   "scripts": {
+    "lint": "eslint . --ext .ts",
+    "type-check": "tsc --noEmit -p tsconfig.json",
     "build": "tsc -p tsconfig.build.json",
+    "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s",
     "prepare": "husky",
     "prepublishOnly": "npm run build"
   },
@@ -48,10 +51,15 @@
     "dotenv": "^17.3.1"
   },
   "devDependencies": {
+    "@eslint/js": "^10.0.1",
     "@types/node": "^22.0.0",
+    "conventional-changelog": "^7.2.0",
+    "conventional-changelog-angular": "^8.3.0",
+    "eslint": "^10.0.3",
     "husky": "^9.1.7",
     "prettier": "^3.5.3",
     "ts-node": "^10.9.2",
-    "typescript": "^5.7.0"
+    "typescript": "^5.7.0",
+    "typescript-eslint": "^8.57.0"
   }
 }

@@ -11,3 +11,4 @@ Thumbs.db
 .temp/
 .tmp/
 agents-workspace/code-review/
+.pnpm-store/

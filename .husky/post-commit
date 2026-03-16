@@ -1,3 +1,4 @@
 #!/usr/bin/env sh
 npm run build
 node dist/bin/aw-review.js
+npm run changelog
